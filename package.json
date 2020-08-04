@@ -1,0 +1,36 @@
+{
+  "name": "@ursus-utilus\/logger",
+  "version": "1.0.0",
+  "description": "logging utils",
+  "typings": "lib/index",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "ts-mocha -p tsconfig.json tests/**/*.spec.ts",
+    "build": "tsc --p tsconfig.json",
+    "pack": "npm run build && npm pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afferenslucem/ursus-utilus-logger.git"
+  },
+  "keywords": [
+    "logs",
+    "logging",
+    "logger"
+  ],
+  "author": "Alex Shakirov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afferenslucem/ursus-utilus-logger/issues"
+  },
+  "homepage": "https://github.com/afferenslucem/ursus-utilus-logger#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.1",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.0",
+    "ts-mocha": "^7.0.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {}
+}

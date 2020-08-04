@@ -1,5 +1,5 @@
 {
-  "name": "@ursus-utilus\/logger",
+  "name": "ursus-utilus-logger",
   "version": "1.0.0",
   "description": "logging utils",
   "typings": "lib/index",

@@ -4,3 +4,4 @@ coverage
 .vscode
 tsconfig.json
 ursus-utilus-*.tgz
+.nyc_output

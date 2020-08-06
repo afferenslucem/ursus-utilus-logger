@@ -1,6 +1,6 @@
 import { LogLevel } from "../log-level";
 
-export interface ILoggerAddress {
+export interface ILoggerName {
     namespace: string;
     loggerName: string; 
 }
@@ -11,6 +11,6 @@ export interface ILoggerConfiguration {
 }
 
 export interface IConfiguration {
-    name: ILoggerAddress | string,
+    name: ILoggerName | string,
     logger: ILoggerConfiguration | LogLevel
 }

@@ -1,15 +1,20 @@
-import { ILoggerCofigaration } from "./i-logger-configuration";
+import { IConfiguration, ILoggerConfiguration, ILoggerName as ILoggerName } from "./i-configuration";
 import { LogLevel } from "../log-level";
-import { IConfiguration, ILoggerAddress, ILoggerConfiguration } from "./i-configuration";
 
-declare type Config = Array<IConfiguration>;
-
+export declare type Config = Array<IConfiguration>;
 
 export class LogConfig {
-    private configs = new Map<string, ILoggerCofigaration>();
+    private configs = new Map<string, ILoggerConfiguration>();
 
-    public constructor(config: Config) {
+    public constructor(config: Config = []) {
+        this.pushDefault();
         this.readConfig(config);
+    }
+
+    private pushDefault(): void {
+        this.configs.set('default', {
+            logLevel: LogLevel.Warning
+        })
     }
 
     private readConfig(config: Config): void {
@@ -42,6 +47,29 @@ export class LogConfig {
             };
         } else {
             throw new Error('Unexpected type of logger cobfiguration')
+        }
+    }
+
+    public getConfiguration(name: string | ILoggerName): ILoggerConfiguration {
+        const logger = this.convertNameToString(name);
+
+        const result = this.configs.get(logger);
+
+        if (result) {
+            return result;
+        } else {
+            const def = this.configs.get('default');
+
+            // @ts-ignore
+            return def;
+        }
+    }
+
+    private convertNameToString(name: string | ILoggerName): string {
+        if(typeof name == 'string') {
+            return name;
+        } else {
+            return `${name.namespace}_${name.loggerName}`;
         }
     }
 }

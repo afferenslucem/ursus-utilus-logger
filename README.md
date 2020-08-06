@@ -78,7 +78,7 @@ const factory = new ConsoleLoggerFactory([
 const defaultLogger = factory.getLogger('undefinedLogger');
 
 defaultLogger.debug('debug message'); // 2020-08-06 13:55:01.484 undefinedLogger - DEBUG - debug message
-defaultLogger.info('info message');
+defaultLogger.info('info message'); // 2020-08-06 13:55:01.484 undefinedLogger - INFO - info message
 ```
 
 ## Setup

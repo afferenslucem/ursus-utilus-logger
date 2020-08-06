@@ -9,19 +9,35 @@ export class ConsoleAppender extends LogAppender {
     }
 
     protected append(message: string, obj?: any): void {
-        console.log(message, obj)
+        if(obj) {
+            console.log(message, obj)
+        } else {
+            console.log(message);
+        }
     }
 
     protected appendWarning(message: string, obj?: any): void {
-        console.warn(message, obj);
+        if(obj) {
+            console.warn(message, obj)
+        } else {
+            console.warn(message);
+        }
     }
 
     protected appendError(message: string, obj?: any): void {
-        console.error(message, obj);
+        if(obj) {
+            console.error(message, obj)
+        } else {
+            console.error(message);
+        }
     }
 
     protected appendFatal(message: string, obj?: any): void {
-        console.error(message, obj);
+        if(obj) {
+            console.error(message, obj)
+        } else {
+            console.error(message);
+        }
     }
 
     protected getCurrentDate(): Date {

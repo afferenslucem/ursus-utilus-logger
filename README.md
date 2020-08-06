@@ -1,2 +1,4 @@
 # ursus-utilus-logger
-logging utils
+Easy logging utils
+
+## Menu

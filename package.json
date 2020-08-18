@@ -1,6 +1,6 @@
 {
   "name": "ursus-utilus-logger",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "logging utils",
   "typings": "lib/index",
   "main": "lib/index.js",
@@ -27,6 +27,8 @@
   "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.1",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.6.0",
     "chai": "^4.2.0",
     "mocha": "^8.1.1",
     "mocha-sinon": "^2.1.2",

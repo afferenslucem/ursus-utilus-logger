@@ -32,7 +32,7 @@ describe('Logger', function () {
             message: 'message',
             id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });
   
@@ -41,7 +41,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.debug('message', obj, '2');
+        logger.debug('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeDebug.calledOnce, 'Didn\'t called once');
@@ -49,9 +49,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeDebug.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     }); 
   
@@ -60,7 +60,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.debug('message', obj, '2');
+        logger.debug('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeDebug.calledOnce, 'Didn\'t called once');
@@ -68,9 +68,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeDebug.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: undefined,
             namespace: undefined,
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });  
   
@@ -89,7 +89,7 @@ describe('Logger', function () {
             message: 'message',
             id: undefined,
             namespace: undefined,
-            obj: undefined
+            objects: []
         } as ILogData), 'Had other args');
     });
   
@@ -108,7 +108,7 @@ describe('Logger', function () {
             message: 'message',
             id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });
   
@@ -117,7 +117,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.info('message', obj, '2');
+        logger.info('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeInfo.calledOnce, 'Didn\'t called once');
@@ -125,9 +125,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeInfo.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     }); 
   
@@ -136,7 +136,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.info('message', obj, '2');
+        logger.info('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeInfo.calledOnce, 'Didn\'t called once');
@@ -144,9 +144,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeInfo.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: undefined,
             namespace: undefined,
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });  
   
@@ -165,7 +165,7 @@ describe('Logger', function () {
             message: 'message',
             id: undefined,
             namespace: undefined,
-            obj: undefined
+            objects: []
         } as ILogData), 'Had other args');
     });  
       
@@ -184,7 +184,7 @@ describe('Logger', function () {
             message: 'message',
             id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });
   
@@ -193,7 +193,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.warn('message', obj, '2');
+        logger.warn('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeWarning.calledOnce, 'Didn\'t called once');
@@ -201,9 +201,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeWarning.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     }); 
   
@@ -212,7 +212,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.warn('message', obj, '2');
+        logger.warn('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeWarning.calledOnce, 'Didn\'t called once');
@@ -220,9 +220,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeWarning.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: undefined,
             namespace: undefined,
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });  
   
@@ -241,7 +241,7 @@ describe('Logger', function () {
             message: 'message',
             id: undefined,
             namespace: undefined,
-            obj: undefined
+            objects: []
         } as ILogData), 'Had other args');
     });  
       
@@ -260,7 +260,7 @@ describe('Logger', function () {
             message: 'message',
             id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });
   
@@ -269,7 +269,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.error('message', obj, '2');
+        logger.error('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeError.calledOnce, 'Didn\'t called once');
@@ -277,9 +277,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeError.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     }); 
   
@@ -288,7 +288,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.error('message', obj, '2');
+        logger.error('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeError.calledOnce, 'Didn\'t called once');
@@ -296,9 +296,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeError.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: undefined,
             namespace: undefined,
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });  
   
@@ -317,7 +317,7 @@ describe('Logger', function () {
             message: 'message',
             id: undefined,
             namespace: undefined,
-            obj: undefined
+            objects: []
         } as ILogData), 'Had other args');
     }); 
       
@@ -336,7 +336,7 @@ describe('Logger', function () {
             message: 'message',
             id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });
   
@@ -345,7 +345,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.fatal('message', obj, '2');
+        logger.fatal('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeFatal.calledOnce, 'Didn\'t called once');
@@ -353,9 +353,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeFatal.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: '1',
             namespace: 'namespace',
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     }); 
   
@@ -364,7 +364,7 @@ describe('Logger', function () {
 
         const obj = {};
 
-        logger.fatal('message', obj, '2');
+        logger.fatal('message', obj);
 
         // @ts-ignore
         assert.isTrue(appender.writeFatal.calledOnce, 'Didn\'t called once');
@@ -372,9 +372,9 @@ describe('Logger', function () {
         assert.isTrue(appender.writeFatal.calledWith({
             loggerName: 'logger',
             message: 'message',
-            id: '2',
+            id: undefined,
             namespace: undefined,
-            obj: obj
+            objects: [obj]
         } as ILogData), 'Had other args');
     });  
   
@@ -393,7 +393,7 @@ describe('Logger', function () {
             message: 'message',
             id: undefined,
             namespace: undefined,
-            obj: undefined
+            objects: []
         } as ILogData), 'Had other args');
     }); 
   

@@ -1,4 +1,4 @@
-# waterlog
+# Waterlog
 
 Easy logging utils
 

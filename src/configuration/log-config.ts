@@ -3,8 +3,6 @@ import { LogLevel } from "../log-level";
 
 export declare type Config = Array<IConfiguration>;
 
-export const EMPTY_LOGGER_NAME = '__empty__';
-
 export class LogConfig {
     private configs = new Map<string, ILoggerConfiguration>();
 
@@ -21,29 +19,31 @@ export class LogConfig {
 
     private readConfig(config: Config): void {
         config.forEach(line => {
-            const name = this.readLoggerName(line.name);
-            const logger = this.readLoggerConfiguration(line.logger);
+            const name = this.readLoggerName(line);
+            const logger = this.readLoggerConfiguration(line);
 
-            this.configs.set(name, logger);
+            const key = name.filter(item => Boolean(item)).join('_');
+
+            this.configs.set(key, logger);
         })
     }
 
-    public readLoggerName(name: ILoggerName | string): string {
-        if (typeof name == 'object') {
-            return [name.namespace, name.loggerName || EMPTY_LOGGER_NAME].join('_');
-        } else if (typeof name == 'string') {
-            return name;
+    private readLoggerName(configuration: IConfiguration): [string | null, string] {
+        if (configuration.name instanceof Object) {
+            return [configuration.name.namespace, configuration.name.loggerName];
+        } else if (typeof configuration.name == 'string'){
+            return [null, configuration.name];
         } else {
             throw new Error('Unexpected type of logger name')
         }
     }
 
-    public readLoggerConfiguration(configuration: ILoggerConfiguration | number): ILoggerConfiguration {
-        if (typeof configuration == 'object') {
-            return configuration;
-        } else if (typeof configuration == 'number') {
+    private readLoggerConfiguration(configuration: IConfiguration): ILoggerConfiguration {
+        if (configuration.logger instanceof Object) {
+            return configuration.logger;
+        } else if (typeof configuration.logger == 'number'){
             return {
-                logLevel: configuration
+                logLevel: configuration.logger
             };
         } else {
             throw new Error('Unexpected type of logger cobfiguration')
@@ -51,29 +51,25 @@ export class LogConfig {
     }
 
     public getConfiguration(name: string | ILoggerName): ILoggerConfiguration {
-        let loggerName = this.readLoggerName(name);
-        let result = this.configs.get(loggerName);
+        const logger = this.convertNameToString(name);
+
+        const result = this.configs.get(logger);
 
         if (result) {
             return result;
+        } else {
+            const def = this.configs.get('default');
+
+            // @ts-ignore
+            return def;
         }
-
-        if (typeof name == 'object') {
-            result = this.findOnlyByNamespace(name.namespace);
-
-            if (result) {
-                return result;
-            }
-        }
-
-        const $default = this.configs.get('default');
-
-        // @ts-ignore
-        return $default;
     }
 
-    public findOnlyByNamespace(namespace: string): ILoggerConfiguration | undefined {
-        const loggerName = this.readLoggerName({ namespace: namespace })
-        return this.configs.get(loggerName);
+    private convertNameToString(name: string | ILoggerName): string {
+        if(typeof name == 'string') {
+            return name;
+        } else {
+            return `${name.namespace}_${name.loggerName}`;
+        }
     }
 }

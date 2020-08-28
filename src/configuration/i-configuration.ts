@@ -2,7 +2,7 @@ import { LogLevel } from "../log-level";
 
 export interface ILoggerName {
     namespace: string;
-    loggerName?: string; 
+    loggerName: string; 
 }
 
 export interface ILoggerConfiguration {

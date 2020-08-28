@@ -24,7 +24,7 @@ Project is created with:
 ### Basic usage
 
 ```typescript
-import {ConsoleLoggerFactory, LogLevel} from 'ursus-utilus-logger';
+import {ConsoleLoggerFactory, LogLevel} from 'waterlog';
 
 const factory = new ConsoleLoggerFactory([
     { // Simple configuration
@@ -66,7 +66,7 @@ defaultLogger.warn('warn message'); // 2020-08-06 13:45:54.626 undefinedLogger -
 ### Override default logger log level
 
 ```typescript
-import {ConsoleLoggerFactory, LogLevel} from 'ursus-utilus-logger';
+import {ConsoleLoggerFactory, LogLevel} from 'waterlog';
 
 const factory = new ConsoleLoggerFactory([
     { // Overriding configuration
@@ -85,4 +85,4 @@ defaultLogger.info('info message'); // 2020-08-06 13:55:01.484 undefinedLogger -
 
 To use this project, install it locally using npm:
 
-`$npm i ursus-utilus-logger`
+`$npm i waterlog`

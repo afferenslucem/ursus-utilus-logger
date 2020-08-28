@@ -1,6 +1,6 @@
 {
-  "name": "ursus-utilus-logger",
-  "version": "2.0.0",
+  "name": "waterlog",
+  "version": "2.0.1",
   "description": "logging utils",
   "typings": "lib/index",
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/afferenslucem/ursus-utilus-logger.git"
+    "url": "git+https://github.com/afferenslucem/waterlog.git"
   },
   "keywords": [
     "logs",
@@ -21,9 +21,9 @@
   "author": "Alex Shakirov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/afferenslucem/ursus-utilus-logger/issues"
+    "url": "https://github.com/afferenslucem/waterlog/issues"
   },
-  "homepage": "https://github.com/afferenslucem/ursus-utilus-logger#readme",
+  "homepage": "https://github.com/afferenslucem/waterlog#readme",
   "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.1",

@@ -1,4 +1,4 @@
-import {LogConfig} from '../src/configuration/log-config';
+import { LogConfig, EMPTY_LOGGER_NAME } from '../src/configuration/log-config';
 import { LogLevel } from '../src/log-level';
 import { assert } from 'chai';
 
@@ -18,6 +18,15 @@ describe('LogConfig', function () {
                 logger: {
                     id: 'id',
                     logLevel: LogLevel.Fatal
+                }
+            },
+            {
+                name: {
+                    namespace: 'namespace2',
+                },
+                logger: {
+                    id: 'id2',
+                    logLevel: LogLevel.Warning
                 }
             },
             {
@@ -53,7 +62,7 @@ describe('LogConfig', function () {
         });
     });
 
-    it('should configuration by fullname', () => {
+    it('should get configuration by fullname', () => {
         const conf = config.getConfiguration({
             namespace: 'namespace1',
             loggerName: 'logger1'
@@ -62,6 +71,77 @@ describe('LogConfig', function () {
         assert.deepEqual(conf, {
             id: 'id',
             logLevel: LogLevel.Fatal
+        });
+    });
+
+    it('should get configuration by namespace', () => {
+        const conf = config.getConfiguration({
+            namespace: 'namespace2',
+            loggerName: 'logger1'
+        });
+
+        assert.deepEqual(conf, {
+            id: 'id2',
+            logLevel: LogLevel.Warning
+        });
+    });
+});
+
+describe('LogConfig reading logger name', function () {
+    let config: LogConfig = null;
+
+    beforeEach(() => {
+        config = new LogConfig([]);
+    })
+
+    it('should read full obj', () => {
+        const name = config.readLoggerName({
+            namespace: 'namespace',
+            loggerName: 'logger'
+        });
+
+        assert.deepEqual(name, 'namespace_logger');
+    });
+
+    it('should read only loggerName', () => {
+        const name = config.readLoggerName('logger');
+
+        assert.deepEqual(name, 'logger');
+    });
+
+    it('should read only namespace', () => {
+        const name = config.readLoggerName({
+            namespace: 'namespace'
+        });
+
+        assert.deepEqual(name, ['namespace', EMPTY_LOGGER_NAME].join('_'));
+    });
+});
+
+describe('LogConfig reading configuration', function () {
+    let config: LogConfig = null;
+
+    beforeEach(() => {
+        config = new LogConfig([]);
+    })
+
+    it('should read full obj', () => {
+        const log = config.readLoggerConfiguration({
+            logLevel: LogLevel.All,
+            id: 'q'
+        });
+
+        assert.deepEqual(log, {
+            logLevel: LogLevel.All,
+            id: 'q'
+        });
+    });
+
+    it('should read only logLevel', () => {
+        const log = config.readLoggerConfiguration(LogLevel.All);
+
+        assert.deepEqual(log, {
+            logLevel: LogLevel.All,
         });
     });
 });

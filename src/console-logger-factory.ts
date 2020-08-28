@@ -31,7 +31,7 @@ export class ConsoleLoggerFactory {
         } : <ILoggerName> name;
 
         return new Logger(this.appender, 
-            fullname.loggerName, 
+            fullname.loggerName || 'unnamed', 
             configuration.logLevel, 
             configuration.id ?? this.id, 
             fullname.namespace);

@@ -1,4 +1,4 @@
-# ursus-utilus-logger
+# waterlog
 
 Easy logging utils
 

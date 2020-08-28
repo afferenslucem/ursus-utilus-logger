@@ -13,10 +13,10 @@ export class Logger implements ILogger {
      * @param data Any log data
      * @param id String which can be used for identify client, logger or etc. Override logger prop
      */
-    debug(message: string, data?: any, id?: string | undefined): void {
+    debug(message: string, ...data: any[]): void {
         if(this.level > LogLevel.Debug) return;
 
-        const log = this.getLogData(message, data, id);
+        const log = this.getLogData(message, data);
         this.appender.writeDebug(log);
     }
     /**
@@ -26,10 +26,10 @@ export class Logger implements ILogger {
      * @param data Any log data
      * @param id String which can be used for identify client, logger or etc. Override logger prop
      */
-    info(message: string, data?: any, id?: string | undefined): void {
+    info(message: string, ...data: any[]): void {
         if(this.level > LogLevel.Info) return;
 
-        const log = this.getLogData(message, data, id);
+        const log = this.getLogData(message, data);
         this.appender.writeInfo(log);
     }
     /**
@@ -39,10 +39,10 @@ export class Logger implements ILogger {
      * @param data Any log data
      * @param id String which can be used for identify client, logger or etc. Override logger prop
      */
-    warn(message: string, data?: any, id?: string | undefined): void {
+    warn(message: string, ...data: any[]): void {
         if(this.level > LogLevel.Warning) return;
 
-        const log = this.getLogData(message, data, id);
+        const log = this.getLogData(message, data);
         this.appender.writeWarning(log);
     }
     /**
@@ -52,10 +52,10 @@ export class Logger implements ILogger {
      * @param data Any log data
      * @param id String which can be used for identify client, logger or etc. Override logger prop
      */
-    error(message: string, data?: any, id?: string | undefined): void {
+    error(message: string, ...data: any[]): void {
         if(this.level > LogLevel.Error) return;
 
-        const log = this.getLogData(message, data, id);
+        const log = this.getLogData(message, data);
         this.appender.writeError(log);
     }
     /**
@@ -65,10 +65,10 @@ export class Logger implements ILogger {
      * @param data Any log data
      * @param id String which can be used for identify client, logger or etc. Override logger prop
      */
-    fatal(message: string, data?: any, id?: string | undefined): void {
+    fatal(message: string, ...data: any[]): void {
         if(this.level > LogLevel.Fatal) return;
 
-        const log = this.getLogData(message, data, id);
+        const log = this.getLogData(message, data);
         this.appender.writeFatal(log);
     }
 
@@ -81,13 +81,13 @@ export class Logger implements ILogger {
      * 
      * @returns {ILogData} log object
      */
-    private getLogData(message: string, data?: any, id?: string): ILogData {
+    private getLogData(message: string, data: any[]): ILogData {
         return {
             loggerName: this.name,
             message: message,
-            id: id ?? this.id,
+            id: this.id,
             namespace: this.namespace,
-            obj: data
+            objects: data
         }
     }
 }

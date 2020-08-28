@@ -11,7 +11,7 @@ export abstract class LogAppender implements ILogAppender {
     writeDebug(data: ILogData): void {
         const formatted = this.formatMessage(data, 'DEBUG');
 
-        this.appendDebug(formatted, data.obj, data.id)
+        this.appendDebug(formatted, data.objects, data.id)
     }
     /**
      * Writes info message
@@ -20,7 +20,7 @@ export abstract class LogAppender implements ILogAppender {
     writeInfo(data: ILogData): void {
         const formatted = this.formatMessage(data, 'INFO');
 
-        this.appendInfo(formatted, data.obj, data.id)
+        this.appendInfo(formatted, data.objects, data.id)
     }
     /**
      * Writes warning message
@@ -29,7 +29,7 @@ export abstract class LogAppender implements ILogAppender {
     writeWarning(data: ILogData): void {
         const formatted = this.formatMessage(data, 'WARN');
 
-        this.appendWarning(formatted, data.obj, data.id)
+        this.appendWarning(formatted, data.objects, data.id)
     }
     /**
      * Writes error message
@@ -38,7 +38,7 @@ export abstract class LogAppender implements ILogAppender {
     writeError(data: ILogData): void {
         const formatted = this.formatMessage(data, 'ERROR');
 
-        this.appendError(formatted, data.obj, data.id)
+        this.appendError(formatted, data.objects, data.id)
     }
     /**
      * Writes fatal message
@@ -47,7 +47,7 @@ export abstract class LogAppender implements ILogAppender {
     writeFatal(data: ILogData): void {
         const formatted = this.formatMessage(data, 'FATAL');
 
-        this.appendFatal(formatted, data.obj, data.id)
+        this.appendFatal(formatted, data.objects, data.id)
     }
 
     /**
@@ -81,7 +81,7 @@ export abstract class LogAppender implements ILogAppender {
      * @protected
      * @virtual
      */
-    protected appendDebug(message: string, obj?: any, id?: string): void {
+    protected appendDebug(message: string, obj: any[], id?: string): void {
         this.append(message, obj, id);
     }
     /**
@@ -89,7 +89,7 @@ export abstract class LogAppender implements ILogAppender {
      * @protected
      * @virtual
      */
-    protected appendInfo(message: string, obj?: any, id?: string): void {
+    protected appendInfo(message: string, obj: any[], id?: string): void {
         this.append(message, obj, id);
     }
     /**
@@ -97,7 +97,7 @@ export abstract class LogAppender implements ILogAppender {
      * @protected
      * @virtual
      */
-    protected appendWarning(message: string, obj?: any, id?: string): void {
+    protected appendWarning(message: string, obj: any[], id?: string): void {
         this.append(message, obj, id);
     }
     /**
@@ -105,7 +105,7 @@ export abstract class LogAppender implements ILogAppender {
      * @protected
      * @virtual
      */
-    protected appendError(message: string, obj?: any, id?: string): void {
+    protected appendError(message: string, obj: any[], id?: string): void {
         this.append(message, obj, id);
     }
     /**
@@ -113,7 +113,7 @@ export abstract class LogAppender implements ILogAppender {
      * @protected
      * @virtual
      */
-    protected appendFatal(message: string, obj?: any, id?: string): void {
+    protected appendFatal(message: string, obj: any[], id?: string): void {
         this.append(message, obj, id);
     }
 
@@ -122,5 +122,5 @@ export abstract class LogAppender implements ILogAppender {
      * @protected
      * @abstract
      */
-    protected abstract append(message: string, obj?: any, id?: string): void;
+    protected abstract append(message: string, obj: any[], id?: string): void;
 }

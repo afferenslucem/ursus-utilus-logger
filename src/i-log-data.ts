@@ -10,7 +10,7 @@ export interface ILogData {
     /**
      * Additional log data
      */
-    obj?: any;
+    objects: any[];
     /**
      * Logger namespace
      */

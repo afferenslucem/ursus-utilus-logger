@@ -3,5 +3,5 @@ tests
 coverage
 .vscode
 tsconfig.json
-ursus-utilus-*.tgz
+waterlog-*.tgz
 .nyc_output

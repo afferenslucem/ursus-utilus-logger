@@ -22,7 +22,7 @@ describe('ConsoleAppender', function () {
             namespace: 'namespace',
             loggerName: 'loggerName',
             message: 'message',
-            obj
+            objects: [obj]
         })
 
         // @ts-ignore
@@ -34,7 +34,8 @@ describe('ConsoleAppender', function () {
     it('should log debug by console.log whithout optional', () => {
         app.writeDebug({
             loggerName: 'loggerName',
-            message: 'message'
+            message: 'message',
+            objects: []
         })
 
         // @ts-ignore
@@ -51,7 +52,7 @@ describe('ConsoleAppender', function () {
             namespace: 'namespace',
             loggerName: 'loggerName',
             message: 'message',
-            obj
+            objects: [obj]
         })
 
         // @ts-ignore
@@ -63,7 +64,8 @@ describe('ConsoleAppender', function () {
     it('should log info by console.log whithout optional', () => {
         app.writeInfo({
             loggerName: 'loggerName',
-            message: 'message'
+            message: 'message',
+            objects: []
         })
 
         // @ts-ignore
@@ -80,7 +82,7 @@ describe('ConsoleAppender', function () {
             namespace: 'namespace',
             loggerName: 'loggerName',
             message: 'message',
-            obj
+            objects: [obj]
         })
 
         // @ts-ignore
@@ -92,7 +94,8 @@ describe('ConsoleAppender', function () {
     it('should log warning by console.warn whithout optional', () => {
         app.writeWarning({
             loggerName: 'loggerName',
-            message: 'message'
+            message: 'message',
+            objects: []
         })
 
         // @ts-ignore
@@ -109,7 +112,7 @@ describe('ConsoleAppender', function () {
             namespace: 'namespace',
             loggerName: 'loggerName',
             message: 'message',
-            obj
+            objects: [obj]
         })
 
         // @ts-ignore
@@ -121,7 +124,8 @@ describe('ConsoleAppender', function () {
     it('should log error by console.error whithout optional', () => {
         app.writeError({
             loggerName: 'loggerName',
-            message: 'message'
+            message: 'message',
+            objects: []
         })
 
         // @ts-ignore
@@ -138,7 +142,7 @@ describe('ConsoleAppender', function () {
             namespace: 'namespace',
             loggerName: 'loggerName',
             message: 'message',
-            obj
+            objects: [obj]
         })
 
         // @ts-ignore
@@ -150,7 +154,8 @@ describe('ConsoleAppender', function () {
     it('should log fatal by console.error whithout optional', () => {
         app.writeFatal({
             loggerName: 'loggerName',
-            message: 'message'
+            message: 'message',
+            objects: []
         })
 
         // @ts-ignore

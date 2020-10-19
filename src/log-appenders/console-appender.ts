@@ -1,11 +1,9 @@
 import { LogAppender } from "./log-appender";
 
 export class ConsoleAppender extends LogAppender {
-    private _getDateFunc?: () => Date;
 
     public constructor() {
         super();
-        this._getDateFunc = undefined;
     }
 
     protected append(message: string,  obj: any[] = []): void {
@@ -38,17 +36,5 @@ export class ConsoleAppender extends LogAppender {
         } else {
             console.error(message);
         }
-    }
-
-    protected getCurrentDate(): Date {
-        if (!this._getDateFunc) {
-            return super.getCurrentDate();
-        }
-
-        return this._getDateFunc();
-    }
-
-    public set getDateFunc(v: () => Date) {
-        this._getDateFunc = v;
     }
 }

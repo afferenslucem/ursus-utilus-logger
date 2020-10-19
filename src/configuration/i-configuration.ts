@@ -1,4 +1,5 @@
 import { LogLevel } from "../log-level";
+import { LogAppender } from "../log-appenders/log-appender";
 
 export interface ILoggerName {
     namespace: string;
@@ -7,7 +8,8 @@ export interface ILoggerName {
 
 export interface ILoggerConfiguration {
     logLevel: LogLevel,
-    id?: string
+    id?: string,
+    appenders?: LogAppender[] | LogAppender,
 }
 
 export interface IConfiguration {

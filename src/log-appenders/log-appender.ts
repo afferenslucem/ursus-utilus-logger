@@ -3,6 +3,7 @@ import { ILogData } from "../i-log-data";
 import moment from 'moment';
 
 export abstract class LogAppender implements ILogAppender {
+    private _getDateFunc?: () => Date;
 
     /**
      * Writes debug message

@@ -1,12 +1,14 @@
 import { describe, it, beforeEach } from 'mocha';
 import 'mocha-sinon';
 import { assert } from 'chai';
+import sinon from 'sinon';
 import { ConsoleAppender } from '../src/log-appenders/console-appender';
 
 describe('ConsoleAppender', function () {
 
     const app = new ConsoleAppender();
-    app.getDateFunc = () => new Date('2020-08-05 13:22:43.134')
+    // @ts-ignore
+    app.getCurrentDate = sinon.stub().returns(new Date('2020-08-05 13:22:43.134'));
 
     beforeEach(function() {
       this.sinon.stub(console, 'log');
